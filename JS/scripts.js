@@ -21,7 +21,9 @@ function Statements(initial, deposit, withdrawal) {
 
 //Account Prototype for Total Amount of Funds
 Statements.prototype.Total = function() {
-  total += this.initial += this.deposit -= this.withdrawal;
+  total = total + this.initial;
+  total = total + this.deposit;
+  total = total - this.withdrawal;
 }
 
 //USER INTERFACE
@@ -46,7 +48,7 @@ $(document).ready(function(){
       console.log(userStatement);
 
       $(".results").show();
-      $("ul#balance").append("<li>"+"Your most recent deposit: $"+ depositInput + " and your most recent withdrawal: $" + withdrawalInput + "." + "</li>")
+      $("ul#balance").append("<li>" + "Your most recent deposit: $"+ depositInput + " and your most recent withdrawal: $" + withdrawalInput + "." + "</li>")
       $(".name").text(userAccount.fullname);
       $("input#output").val(total);
     });
