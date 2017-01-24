@@ -1,12 +1,12 @@
 //BUSINESS LOGIC
 var total = 0;
-//Constructor
-function Account(fullname,statement) {
+//Constructor for Account
+function Account(fullname,Statements) {
   this.fullname = fullname;
-  this.statements = [];
+  this.Statements = [];
 }
-
-function statements(initial, deposit, withdrawal) {
+//Constructor for Statement
+function Statements(initial, deposit, withdrawal) {
   this.initial = initial;
   this.deposit = deposit;
   this.withdrawal = withdrawal;
@@ -22,16 +22,21 @@ $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
 
-
-    $(".information").each(function() {
+    //Define variable using Constructor Account
     var name = $(this).find("input.name").val();
+    var userAccount = new Account (name);
+    console.log(userAccount);
+
+    //Define variable using Constructor Statments
+    $(".information").each(function() {
     var initialInput = $(this).find("input.initial").val();
     var depositInput = $(this).find("input.deposit").val();
     var withdrawalInput =$(this).find("input.withdrawal").val();
-    var userAccount = new Account(name, initialInput, depositInput, withdrawalInput);
+    var userStatement = new Statements(initialInput, depositInput, withdrawalInput);
+
+    userAccount.Statements.push(userStatement);
     console.log(userAccount);
   });
-
     // userAccount.Total();
     // console.log(total);
     // $(".name").text(name);
