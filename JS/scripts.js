@@ -21,7 +21,10 @@ $(document).ready(function(){
     var initialInput = parseInt($("input#initial").val());
     var depositInput = parseInt($("input#deposit").val());
     var withdrawalInput =parseInt($("input#withdrawal").val());
-
     var userAccount = new Account(name, initialInput, depositInput, withdrawalInput);
+    userAccount.Total();
+    console.log(total);
+    $(".name").text(name);
+    $("input#output").val(total);
   });
 });
