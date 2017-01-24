@@ -42,15 +42,14 @@ $(document).ready(function(){
       var userStatement = new Statements(initialInput, depositInput, withdrawalInput);
 
       userAccount.Statements.push(userStatement);
-      console.log(userStatement);
       userStatement.Total();
-      console.log(total);
+      console.log(userStatement);
+
+      $(".results").show();
+      $("ul#balance").append("<li>"+"Your most recent deposit: $"+ userStatement.deposit + " and your most recent withdrawal: $" + userStatement.withdrawal + "." + "</li>")
+      $(".name").text(userAccount.fullname);
+      $("input#output").val(total);
     });
 
-
-    // userAccount.Total();
-    // console.log(total);
-    // $(".name").text(name);
-    // $("input#output").val(total);
   });
 });
