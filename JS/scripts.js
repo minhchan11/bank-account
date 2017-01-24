@@ -9,7 +9,7 @@ function Account(fullname,initial,deposit,withdrawal) {
 }
 
 //Account Prototype for Total Amount of Funds
-Account.prototype.total = function() {
+Account.prototype.Total = function() {
   return total += this.initial += this.deposit -= this.withdrawal;
 }
 
@@ -17,6 +17,11 @@ Account.prototype.total = function() {
 $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
+    var name = $("input#name").val();
+    var initialInput = parseInt($("input#initial").val());
+    var depositInput = parseInt($("input#deposit").val());
+    var withdrawalInput =parseInt($("input#withdrawal").val());
 
+    var userAccount = new Account(name, initialInput, depositInput, withdrawalInput);
   });
 });
