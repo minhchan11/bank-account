@@ -14,9 +14,9 @@ function Account(fullname,Statements) {
 }
 //Constructor for Statement
 function Statements(initial, deposit, withdrawal) {
-  this.initial = getNum(initial);
-  this.deposit = getNum(deposit);
-  this.withdrawal = getNum(withdrawal);
+  this.initial = initial;
+  this.deposit = deposit;
+  this.withdrawal = withdrawal;
 }
 
 //Account Prototype for Total Amount of Funds
@@ -36,9 +36,9 @@ $(document).ready(function(){
 
     //Define variable using Constructor Statements
     $(".information").each(function() {
-      var initialInput = $(this).find("input.initial").val();
-      var depositInput = $(this).find("input.deposit").val();
-      var withdrawalInput =$(this).find("input.withdrawal").val();
+      var initialInput = getNum($(this).find("input.initial").val());
+      var depositInput = getNum($(this).find("input.deposit").val());
+      var withdrawalInput =getNum($(this).find("input.withdrawal").val());
       var userStatement = new Statements(initialInput, depositInput, withdrawalInput);
 
       userAccount.Statements.push(userStatement);
@@ -46,7 +46,7 @@ $(document).ready(function(){
       console.log(userStatement);
 
       $(".results").show();
-      $("ul#balance").append("<li>"+"Your most recent deposit: $"+ userStatement.deposit + " and your most recent withdrawal: $" + userStatement.withdrawal + "." + "</li>")
+      $("ul#balance").append("<li>"+"Your most recent deposit: $"+ depositInput + " and your most recent withdrawal: $" + withdrawalInput + "." + "</li>")
       $(".name").text(userAccount.fullname);
       $("input#output").val(total);
     });
