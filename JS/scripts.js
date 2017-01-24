@@ -1,5 +1,12 @@
 //BUSINESS LOGIC
 var total = 0;
+//Convert all NaN into 0
+function getNum(val) {
+   if (val === "") {
+     return 0;
+   }
+   return parseInt(val);
+}
 //Constructor for Account
 function Account(fullname,Statements) {
   this.fullname = fullname;
@@ -7,14 +14,14 @@ function Account(fullname,Statements) {
 }
 //Constructor for Statement
 function Statements(initial, deposit, withdrawal) {
-  this.initial = initial;
-  this.deposit = deposit;
-  this.withdrawal = withdrawal;
+  this.initial = getNum(initial);
+  this.deposit = getNum(deposit);
+  this.withdrawal = getNum(withdrawal);
 }
 
 //Account Prototype for Total Amount of Funds
-Account.prototype.Total = function() {
-  return total += this.initial += this.deposit -= this.withdrawal;
+Statements.prototype.Total = function() {
+  total += this.initial += this.deposit -= this.withdrawal;
 }
 
 //USER INTERFACE
@@ -27,16 +34,20 @@ $(document).ready(function(){
     var userAccount = new Account (name);
     console.log(userAccount);
 
-    //Define variable using Constructor Statments
+    //Define variable using Constructor Statements
     $(".information").each(function() {
-    var initialInput = $(this).find("input.initial").val();
-    var depositInput = $(this).find("input.deposit").val();
-    var withdrawalInput =$(this).find("input.withdrawal").val();
-    var userStatement = new Statements(initialInput, depositInput, withdrawalInput);
+      var initialInput = $(this).find("input.initial").val();
+      var depositInput = $(this).find("input.deposit").val();
+      var withdrawalInput =$(this).find("input.withdrawal").val();
+      var userStatement = new Statements(initialInput, depositInput, withdrawalInput);
 
-    userAccount.Statements.push(userStatement);
-    console.log(userAccount);
-  });
+      userAccount.Statements.push(userStatement);
+      console.log(userStatement);
+      userStatement.Total();
+      console.log(total);
+    });
+
+
     // userAccount.Total();
     // console.log(total);
     // $(".name").text(name);
